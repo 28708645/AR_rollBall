@@ -17,6 +17,9 @@ public class PlaceObjectOnPlane : MonoBehaviour
     private GameObject prefab;
     [SerializeField]
     private RingManager ring;
+    [Header("GameManager Reference")]
+    [SerializeField]
+    private GameManager gm;
     [Header("Game Number of Rings")]
     [SerializeField]
     private int nbRings=2;
@@ -52,8 +55,9 @@ public class PlaceObjectOnPlane : MonoBehaviour
             ARPlane plane = aRPlaneManager.GetPlane(hits[0].trackableId);
             BoxCollider box=plane.gameObject.AddComponent<BoxCollider>();
             box.size = new Vector3(plane.size.x, 0.001f, plane.size.y);
+            gm.setGamePlan(plane);
             Vector3 spawnPos = new Vector3(pose.position.x, pose.position.y + 0.01f, pose.position.z);
-            ring.spawnRings(nbRings, spawnPos, plane.extents.x, plane.extents.y);
+            ring.spawnRings(nbRings, spawnPos, plane.extents.x/2, plane.extents.y/2);
             GameObject obj = Instantiate(prefab, spawnPos, pose.rotation);
 
         }

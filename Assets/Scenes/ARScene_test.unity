@@ -1378,7 +1378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6554891464554774542, guid: ad27462f39f1b404d9106749267d6e2c, type: 3}
   ring: {fileID: 1781264678}
-  nbRings: 5
+  gm: {fileID: 1052320399}
+  nbRings: 7
 --- !u!1 &1612037920
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     // disable the spawner to avoid spawning multiples balls
     [SerializeField]
     PlaceObjectOnPlane spawner;
+    //plan for update playfield
+    ARPlane plane;
     private int target;
     [Header("UI References")]
     [SerializeField]
@@ -47,12 +49,22 @@ public class GameManager : MonoBehaviour
         if (gs == GAMESTATE.play)
         {
             displayPlayUI();
+            updatePlane();
             updateTimer();
         }
         if (gs == GAMESTATE.finished)
         {
             displayRestart();
         }
+    }
+    private void updatePlane()
+    {
+        BoxCollider box = plane.gameObject.GetComponent<BoxCollider>();
+        box.size = new Vector3(plane.size.x, 0.001f, plane.size.y);
+    }
+    public void setGamePlan(ARPlane p)
+    {
+        this.plane = p;
     }
     //Display functions
     private void displayPlayUI()
