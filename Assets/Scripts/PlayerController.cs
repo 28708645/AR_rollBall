@@ -35,11 +35,22 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (this.transform.position.y < -100)
+        {
+            resetPos();
+        }
         //Avoid moving the ball if timer not launched
         if (_gm.getGameState() == GAMESTATE.play)
         {
             _rigidBody.velocity = new Vector3(_joystick.Horizontal * speed, _rigidBody.velocity.y, _joystick.Vertical * speed);
         }
+    }
+
+    private void resetPos()
+    {
+        Vector3 pos = _gm.getCenterPlan();
+        Vector3 nPos = new Vector3(pos.x, pos.y + 0.001f, pos.z);
+        this.transform.position = nPos;
     }
 
     //Check if on the ground

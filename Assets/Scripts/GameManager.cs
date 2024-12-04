@@ -66,6 +66,11 @@ public class GameManager : MonoBehaviour
     {
         this.plane = p;
     }
+
+    public Vector3 getCenterPlan()
+    {
+        return plane.center;
+    }
     //Display functions
     private void displayPlayUI()
     {
