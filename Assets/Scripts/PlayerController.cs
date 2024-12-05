@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [Range(0, 100)] private int speed;
     [SerializeField]
     [Range(0, 2)] private float jumpforce;
-
     private List<Collider> groundColliders= new List<Collider>();
 
     private bool grounded;
@@ -86,7 +85,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collectible Found");
             _audio.Play();
             Destroy(go);
-            //_rigidBody.velocity = new Vector3(_rigidBody.velocity.x, 0, _rigidBody.velocity.z);
         }
     }
     public void jumpAnimation()
